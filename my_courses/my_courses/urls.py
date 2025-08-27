@@ -16,8 +16,12 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, redirect
 from rest_framework.schemas import get_schema_view
+
+def redirect_to_api(request):
+    return redirect('api/schema/')
+
 
 urlpatterns = [
     path('', include('grades.urls')),

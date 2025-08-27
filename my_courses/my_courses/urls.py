@@ -14,9 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
 from django.contrib import admin
-from django.urls import path, include, redirect
+from django.urls import path, include
+from django.shortcuts import redirect
 from rest_framework.schemas import get_schema_view
 
 def redirect_to_api(request):
@@ -24,8 +24,12 @@ def redirect_to_api(request):
 
 
 urlpatterns = [
-    path('', include('grades.urls')),
+    path('', redirect_to_api),
+
+    path('api/', include('grades.urls')),
+
     path("admin/", admin.site.urls),
+    
     path('api/schema/', get_schema_view(
         title="Grades API",
         description="API para gestión de estudiantes y profesores",

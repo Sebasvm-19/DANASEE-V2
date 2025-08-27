@@ -40,7 +40,7 @@ REST_FRAMEWORK = {
 # Database
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.getenv("DATABASE_PUBLIC_URL")
+        default="postgresql://postgres:GluWpjxMFDIJBrMEyEnKaXkuqWYlKBPJ@postgres.railway.internal:5432/railway"
     )
 }
 

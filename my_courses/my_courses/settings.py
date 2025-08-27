@@ -10,12 +10,12 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = "ti)ta3u)!$#=bn(02z9nkp!gxorq%+1jg&a+-cx=!+uzpi^ocr"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DJANGO_DEBUG", "False") == "True"
+DEBUG = "TRUE"
 
-ALLOWED_HOSTS = ["danasee-v2-production.up.railway.app"]
+ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
@@ -92,4 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+ALLOWED_HOSTS = ['localhost','https://danasee-v2-production.up.railway.app/admin/login/?next=/admin/']
+
+CSRF_TRUSTED_ORIGINS = ['http://*','https://web-production-17d9.up.railway.app']

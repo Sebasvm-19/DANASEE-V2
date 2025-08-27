@@ -4,7 +4,10 @@ Django settings for my_courses project.
 
 from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,9 +42,7 @@ REST_FRAMEWORK = {
 
 # Database
 DATABASES = {
-    "default": dj_database_url.config(
-        default="postgresql://postgres:GluWpjxMFDIJBrMEyEnKaXkuqWYlKBPJ@postgres.railway.internal:5432/railway"
-    )
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 MIDDLEWARE = [
@@ -98,4 +99,4 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 ALLOWED_HOSTS = ['localhost','danasee-v2-production.up.railway.app']
 
-CSRF_TRUSTED_ORIGINS = ['http://*','danasee-v2-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['http://*','https://danasee-v2-production.up.railway.app']

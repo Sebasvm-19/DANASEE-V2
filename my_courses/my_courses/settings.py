@@ -49,15 +49,11 @@ REST_FRAMEWORK = {
 }
 
 # Database
-
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True
+        default=os.getenv("DATABASE_PUBLIC_URL")
     )
 }
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
